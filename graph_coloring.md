@@ -23,7 +23,7 @@
 - **範例**:  
   - 某些圖可以使用 2 種顏色來完成著色。  
 - **性質**:  
-  - 決定圖的Chromatic Number是一個 NP 完全問題。  
+  - 決定圖的Chromatic Number是一個  NP-complete問題。  
 
 ---
 
