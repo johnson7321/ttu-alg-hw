@@ -1,80 +1,73 @@
-# Python3 program to implement greedy 
-# algorithm for graph coloring 
+# Python3 程式，實現圖著色問題的貪婪演算法
 
 def addEdge(adj, v, w):
 	
 	adj[v].append(w)
 	
-	# Note: the graph is undirected
+	# 注意：這是一個無向圖
 	adj[w].append(v) 
 	return adj
 
-# Assigns colors (starting from 0) to all
-# vertices and prints the assignment of colors
+# 為所有頂點分配顏色（從 0 開始），並打印顏色分配結果
 def greedyColoring(adj, V):
 	
-	result = [-1] * V
+	result = [-1] * V  # 初始化，每個頂點的顏色設為 -1（未著色）
 
-	# Assign the first color to first vertex
+	# 為第一個頂點分配第一種顏色
 	result[0] = 0;
 
-
-	# A temporary array to store the available colors. 
-	# True value of available[cr] would mean that the
-	# color cr is assigned to one of its adjacent vertices
+	# 暫時陣列，用於儲存可用顏色。
+	# 如果 available[cr] 的值為 True，表示顏色 cr 已被其相鄰頂點分配
 	available = [False] * V
 
-	# Assign colors to remaining V-1 vertices
+	# 為剩餘的 V-1 個頂點分配顏色
 	for u in range(1, V):
 		
-		# Process all adjacent vertices and
-		# flag their colors as unavailable
+		# 處理所有相鄰頂點，將它們使用的顏色標記為不可用
 		for i in adj[u]:
-			if (result[i] != -1):
+			if (result[i] != -1):  # 如果相鄰頂點已被著色
 				available[result[i]] = True
 
-		# Find the first available color
+		# 找到第一個可用的顏色
 		cr = 0
 		while cr < V:
-			if (available[cr] == False):
+			if (available[cr] == False):  # 如果顏色可用
 				break
-			
 			cr += 1
 			
-		# Assign the found color
+		# 將找到的顏色分配給當前頂點
 		result[u] = cr 
 
-		# Reset the values back to false 
-		# for the next iteration
+		# 重置可用顏色的標記，為下一次迭代準備
 		for i in adj[u]:
-			if (result[i] != -1):
+			if (result[i] != -1):  # 如果相鄰頂點已被著色
 				available[result[i]] = False
 
-	# Print the result
+	# 打印結果
 	for u in range(V):
-		print("Vertex", u, " ---> Color", result[u])
+		print("頂點", u, " ---> 顏色", result[u])
 
-# Driver Code
+# 主程式
 if __name__ == '__main__':
 	
-	g1 = [[] for i in range(5)]
+	g1 = [[] for i in range(5)]  # 初始化圖 1 的鄰接列表
 	g1 = addEdge(g1, 0, 1)
 	g1 = addEdge(g1, 0, 2)
 	g1 = addEdge(g1, 1, 2)
 	g1 = addEdge(g1, 1, 3)
 	g1 = addEdge(g1, 2, 3)
 	g1 = addEdge(g1, 3, 4)
-	print("Coloring of graph 1 ")
+	print("圖 1 的著色結果")
 	greedyColoring(g1, 5)
 
-	g2 = [[] for i in range(5)]
+	g2 = [[] for i in range(5)]  # 初始化圖 2 的鄰接列表
 	g2 = addEdge(g2, 0, 1)
 	g2 = addEdge(g2, 0, 2)
 	g2 = addEdge(g2, 1, 2)
 	g2 = addEdge(g2, 1, 4)
 	g2 = addEdge(g2, 2, 4)
 	g2 = addEdge(g2, 4, 3)
-	print("\nColoring of graph 2")
+	print("\n圖 2 的著色結果")
 	greedyColoring(g2, 5)
 
-# This code is contributed by mohit kumar 29
+# 此程式由 mohit kumar 29 提供
