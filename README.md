@@ -8,8 +8,8 @@
 
 2. **進行講授題目**
    - 本次需完成以下兩個主題的教學：
-     - Introduction to Graph Coloring
-     - Graph Coloring Using Greedy AlgorithmGraph Coloring Using Greedy Algorithm
+     - Introduction to Graph Coloring https://www.geeksforgeeks.org/graph-coloring-applications/ 
+     - Graph Coloring Using Greedy AlgorithmGraph Coloring Using Greedy Algorithm https://www.geeksforgeeks.org/graph-coloring-set-2-greedy-algorithm/ 
 
 3. **準備資料**
    - 深入研讀相關文獻與教材。
